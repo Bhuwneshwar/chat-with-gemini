@@ -3,18 +3,20 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
 require("dotenv").config();
-// const {
-//   setupKinde,
-//   protectRoute,
-//   getUser,
-//   GrantType,
-// } = require("@kinde-oss/kinde-node-express");
+const {
+  setupKinde,
+  protectRoute,
+  getUser,
+  GrantType,
+} = require("@kinde-oss/kinde-node-express");
 
 const {
   GoogleGenerativeAI,
   HarmCategory,
   HarmBlockThreshold,
 } = require("@google/generative-ai");
+
+const session = require("express-session");
 
 const conversation = require("./models/conversation");
 const { env } = require("process");
@@ -30,20 +32,32 @@ const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 const app = express();
 app.use(cors());
 app.use(express.json());
+// const session = require("express-session");
+app.use(
+  session({
+    secret: "your-secret-key",
+    resave: false, // Set to false unless needed
+    saveUninitialized: true, // Set to false unless required
+    cookie: {
+      secure: process.env.NODE_ENV === "production", // Use secure cookies in production
+    },
+    // store: new YourCustomStore(), // If using a custom session store
+  })
+);
 
-// const config = {
-//   clientId: "f2af4516ea38440394a3f1dc88d6477b",
-//   issuerBaseUrl: "https://rebyb.kinde.com",
-//   siteUrl: process.env.SITE_URL,
-//   secret: process.env.KINDE_SECRET,
-//   redirectUrl: process.env.SITE_URL + "/callback",
-//   scope: "openid profile email",
-//   grantType: GrantType.AUTHORIZATION_CODE,
-//   unAuthorisedUrl: process.env.SITE_URL + "/unauthorised",
-//   postLogoutRedirectUrl: process.env.SITE_URL,
-// };
+const config = {
+  clientId: "f2af4516ea38440394a3f1dc88d6477b",
+  issuerBaseUrl: "https://rebyb.kinde.com",
+  siteUrl: process.env.SITE_URL,
+  secret: process.env.KINDE_SECRET,
+  redirectUrl: process.env.SITE_URL + "/callback",
+  scope: "openid profile email",
+  grantType: GrantType.AUTHORIZATION_CODE,
+  unAuthorisedUrl: process.env.SITE_URL + "/unauthorised",
+  postLogoutRedirectUrl: process.env.SITE_URL,
+};
 
-// setupKinde(config, app);
+setupKinde(config, app);
 
 // Routes
 // app.get("/api/admin", protectRoute, getUser, (req, res) => {
@@ -223,6 +237,8 @@ const connectDatabase = () => {
     )
     .catch((e) => console.error("Database connection error:", e));
 };
+
+// console.log({ protectRoute: protectRoute.toString().split(/[;{}]/) });
 
 app.listen(3000, () => {
   console.log("Server running on http://localhost:3000");
