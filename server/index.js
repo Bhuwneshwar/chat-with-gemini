@@ -3,12 +3,12 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
 require("dotenv").config();
-const {
-  setupKinde,
-  protectRoute,
-  getUser,
-  GrantType,
-} = require("@kinde-oss/kinde-node-express");
+// const {
+//   setupKinde,
+//   protectRoute,
+//   getUser,
+//   GrantType,
+// } = require("@kinde-oss/kinde-node-express");
 
 const {
   GoogleGenerativeAI,
@@ -31,19 +31,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const config = {
-  clientId: "f2af4516ea38440394a3f1dc88d6477b",
-  issuerBaseUrl: "https://rebyb.kinde.com",
-  siteUrl: process.env.SITE_URL,
-  secret: process.env.KINDE_SECRET,
-  redirectUrl: process.env.SITE_URL + "/callback",
-  scope: "openid profile email",
-  grantType: GrantType.AUTHORIZATION_CODE,
-  unAuthorisedUrl: process.env.SITE_URL + "/unauthorised",
-  postLogoutRedirectUrl: process.env.SITE_URL,
-};
+// const config = {
+//   clientId: "f2af4516ea38440394a3f1dc88d6477b",
+//   issuerBaseUrl: "https://rebyb.kinde.com",
+//   siteUrl: process.env.SITE_URL,
+//   secret: process.env.KINDE_SECRET,
+//   redirectUrl: process.env.SITE_URL + "/callback",
+//   scope: "openid profile email",
+//   grantType: GrantType.AUTHORIZATION_CODE,
+//   unAuthorisedUrl: process.env.SITE_URL + "/unauthorised",
+//   postLogoutRedirectUrl: process.env.SITE_URL,
+// };
 
-setupKinde(config, app);
+// setupKinde(config, app);
 
 // Routes
 app.get("/api/admin", protectRoute, getUser, (req, res) => {
