@@ -1,0 +1,166 @@
+.markdown {
+  /* max-width: 800px; */
+  width: 100%;
+  /* margin: 0 1rem; */
+  background: hsl(0, 0%, 100%);
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+}
+
+/* Headings */
+.markdown h1 {
+  font-size: 2em;
+  font-weight: bold;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+}
+
+.markdown h2 {
+  font-size: 1.75em;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 4px;
+}
+
+.markdown h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  font-size: 1.25em;
+  margin-bottom: 8px;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+  color: #2c3e50;
+}
+*/
+
+/* Paragraphs */
+.markdown p {
+  margin: 1em 0;
+  color: #555;
+}
+*/
+
+/* Blockquotes */
+ .markdown blockquote {
+  margin: 1.5em 0;
+  padding: 10px 20px;
+  color: #666;
+  font-style: italic;
+  background-color: #f4f4f4;
+  border-left: 5px solid #ddd;
+}
+*/
+
+/* Lists */
+ .markdown ul {
+  list-style-type: disc;
+  padding-left: 40px;
+}
+
+.markdown ol {
+  list-style-type: decimal;
+  padding-left: 40px;
+}
+
+.markdown li {
+  margin: 5px 0;
+}
+*/
+
+/* Code Blocks */
+.markdown pre {
+  background: #2d2d2d;
+  color: #f8f8f2;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+}
+
+.markdown pre code {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.markdown code {
+  background-color: #f4f4f4;
+  border-radius: 3px;
+  padding: 2px 4px;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  color: #c7254e;
+}
+*/
+
+/* Links */
+ .markdown a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.markdown a:hover {
+  text-decoration: underline;
+}
+*/
+
+/* Horizontal Rule */
+.markdown hr {
+  border: none;
+  border-top: 2px solid #ddd;
+  margin: 20px 0;
+}
+*/
+
+/* Tables */
+ .markdown table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.markdown table th,
+.markdown table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.markdown table th {
+  background-color: #f4f4f4;
+  color: #333;
+  font-weight: bold;
+}
+*/
+
+/* Images */
+.markdown img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+*/
+
+/* Inline Elements */
+ .markdown em {
+  font-style: italic;
+}
+
+.markdown strong {
+  font-weight: bold;
+}
+
+.markdown del {
+  text-decoration: line-through;
+}
