@@ -46,43 +46,43 @@ app.use(express.json());
 // setupKinde(config, app);
 
 // Routes
-app.get("/api/admin", protectRoute, getUser, (req, res) => {
-  res.send(
-    `<h1>Welcome to the Admin Panel</h1><p>Hello, ${req.user.given_name}</p>`
-  );
-});
+// app.get("/api/admin", protectRoute, getUser, (req, res) => {
+//   res.send(
+//     `<h1>Welcome to the Admin Panel</h1><p>Hello, ${req.user.given_name}</p>`
+//   );
+// });
 
-app.get("/api/user", protectRoute, getUser, (req, res) => {
-  res.send({ success: true, user: req.user });
-});
+// app.get("/api/user", protectRoute, getUser, (req, res) => {
+//   res.send({ success: true, user: req.user });
+// });
 
-app.get("/api/chats", protectRoute, getUser, async (req, res) => {
-  try {
-    const chats = await conversation.find({
-      userId: req.user.id,
-    });
-    return res.send({ chats, success: true });
-  } catch (error) {
-    console.log(error);
-    res.send(error.message);
-  }
-});
-app.get("/api/chats/:id", protectRoute, getUser, async (req, res) => {
-  try {
-    const conversationId = req.params.id;
+// app.get("/api/chats", protectRoute, getUser, async (req, res) => {
+//   try {
+//     const chats = await conversation.find({
+//       userId: req.user.id,
+//     });
+//     return res.send({ chats, success: true });
+//   } catch (error) {
+//     console.log(error);
+//     res.send(error.message);
+//   }
+// });
+// app.get("/api/chats/:id", protectRoute, getUser, async (req, res) => {
+//   try {
+//     const conversationId = req.params.id;
 
-    if (conversationId) {
-      const chat = await conversation.findById(conversationId);
-      if (!chat) {
-        return res.status(404).json({ error: "Conversation not found." });
-      }
-      return res.send({ chat, success: true });
-    } else return res.status(404).json({ error: "id is required!" });
-  } catch (error) {
-    console.log(error);
-    res.send(error.message);
-  }
-});
+//     if (conversationId) {
+//       const chat = await conversation.findById(conversationId);
+//       if (!chat) {
+//         return res.status(404).json({ error: "Conversation not found." });
+//       }
+//       return res.send({ chat, success: true });
+//     } else return res.status(404).json({ error: "id is required!" });
+//   } catch (error) {
+//     console.log(error);
+//     res.send(error.message);
+//   }
+// });
 
 app.get("/unauthorised", (req, res) => {
   res.send(`
@@ -206,7 +206,7 @@ async function handleGeminiRequest(req, res) {
   }
 }
 
-app.post("/api/ask-gemini", protectRoute, getUser, handleGeminiRequest);
+// app.post("/api/ask-gemini", protectRoute, getUser, handleGeminiRequest);
 
 //app.use("Images", express.static(path.resolve("./client/dist/Images")));
 app.use(express.static(path.resolve("./client/dist")));
