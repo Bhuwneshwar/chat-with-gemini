@@ -17,6 +17,7 @@ const {
 } = require("@google/generative-ai");
 
 const conversation = require("./models/conversation");
+const { env } = require("process");
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
@@ -33,13 +34,13 @@ app.use(express.json());
 const config = {
   clientId: "f2af4516ea38440394a3f1dc88d6477b",
   issuerBaseUrl: "https://rebyb.kinde.com",
-  siteUrl: "http://localhost:3000",
+  siteUrl: process.env.SITE_URL,
   secret: process.env.KINDE_SECRET,
-  redirectUrl: "http://localhost:3000/callback",
+  redirectUrl: process.env.SITE_URL + "/callback",
   scope: "openid profile email",
   grantType: GrantType.AUTHORIZATION_CODE,
-  unAuthorisedUrl: "http://localhost:3000/unauthorised",
-  postLogoutRedirectUrl: "http://localhost:3000",
+  unAuthorisedUrl: process.env.SITE_URL + "/unauthorised",
+  postLogoutRedirectUrl: process.env.SITE_URL,
 };
 
 setupKinde(config, app);
